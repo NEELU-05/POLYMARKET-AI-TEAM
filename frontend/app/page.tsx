@@ -243,7 +243,7 @@ export default function DashboardPage() {
           <div>
             <p className="text-slate-400">Active Model</p>
             <p className="text-lg font-medium text-blue-400">
-              {data.llm_stats.current_model.split("/").pop()?.replace(":free", "") ?? data.llm_stats.current_model}
+              {data.llm_stats.current_model?.split("/").pop()?.replace(":free", "") ?? "N/A"}
             </p>
           </div>
         </div>
@@ -251,7 +251,7 @@ export default function DashboardPage() {
         <div className="mt-4 border-t border-slate-700 pt-3">
           <p className="text-sm text-slate-400 mb-2">Available Models</p>
           <div className="flex flex-wrap gap-2">
-            {data.llm_stats.fallback_models.map((model) => {
+            {(data.llm_stats.fallback_models ?? []).map((model) => {
               const shortName = model.split("/").pop()?.replace(":free", "") ?? model;
               const isActive = model === data.llm_stats.current_model;
               return (

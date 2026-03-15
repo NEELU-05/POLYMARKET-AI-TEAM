@@ -49,6 +49,7 @@ export interface LLMStats {
   total_latency_seconds: number;
   avg_latency_seconds: number;
   current_model: string;
+  fallback_models?: string[];
 }
 
 export interface EquityPoint {
