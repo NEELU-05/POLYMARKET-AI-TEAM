@@ -24,6 +24,8 @@
 | 13       | Dark/Light Theme Toggle  | 🔜 Planned       |
 | 14       | Notification Center      | 🔜 Planned       |
 | 15       | Agent Decision Trace     | 🔜 Planned       |
+| 16       | Portfolio Management Hub | 🔜 Planned       |
+| 17       | Social Sentiment Agg     | 🔜 Planned       |
 
 ---
 
@@ -537,6 +539,50 @@
 - Shows: what if we had used a different `min_edge`? Different `max_trade_size`?
 - Slider controls to adjust parameters and see which trades would change
 - Requires backend backtesting API (see RESEARCH_AGENT_IMPROVEMENT.md §9.4)
+
+---
+
+## PRIORITY 16: PORTFOLIO MANAGEMENT HUB 🔜 [PLANNED]
+
+### 16.1 — Multi-Wallet Support
+
+**Problem:** User might have multiple Polymarket wallets for different strategies.
+
+**Solution:**
+- Unified view for multiple wallet addresses
+- Toggle individual wallets on/off for global stats
+- Aggregate PnL, equity, and positions across all connected accounts
+
+### 16.2 — Exit Strategy Designer
+
+**Problem:** Manual exits are hard to manage; AI exits need better UI controls.
+
+**Solution:**
+- Visual editor for exit rules: "Sell 50% if price > $0.80", "Trailing stop-loss: 5%"
+- Preview potential exit scenarios on a price chart
+- Real-time alerts when position price nears exit triggers
+
+---
+
+## PRIORITY 17: SOCIAL SENTIMENT AGGREGATOR 🔜 [PLANNED]
+
+### 17.1 — Twitter/X & Reddit Signal Feed
+
+**Problem:** Polymarket is deeply influenced by social sentiment that's not just "news".
+
+**Solution:**
+- Live feed of relevant tweets and Reddit threads for specific markets
+- Sentiment score (Bullish/Bearish) per market based on social volume
+- Correlation chart: Sentiment vs Market Price
+
+### 17.2 — Influencer Tracking
+
+**Problem:** Certain "crypto-influencers" move markets with single posts.
+
+**Solution:**
+- Watchlist of key accounts influencers
+- Immediate "Sentiment Shift" alert when an influencer posts about a market we're in
+- Auto-tagging influencer mentions in the research agent output
 
 ---
 

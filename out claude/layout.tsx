@@ -24,10 +24,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-slate-900 text-slate-100 antialiased overflow-hidden`}>
-        <div className="flex flex-col md:flex-row h-screen overflow-hidden">
+      <body className={`${inter.className} bg-slate-900 text-slate-100 antialiased`}>
+        <div className="flex h-screen">
           <Sidebar />
-          <main className="flex-1 overflow-y-auto p-4 md:p-6">{children}</main>
+          <main className="flex-1 overflow-y-auto p-6">{children}</main>
         </div>
         <CommandPalette />
         <Toaster

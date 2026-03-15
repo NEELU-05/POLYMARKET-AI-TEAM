@@ -241,8 +241,34 @@ export default function DashboardPage() {
             </p>
           </div>
           <div>
-            <p className="text-slate-400">Model</p>
-            <p className="text-lg font-medium text-blue-400">step-3.5-flash</p>
+            <p className="text-slate-400">Active Model</p>
+            <p className="text-lg font-medium text-blue-400">
+              {data.llm_stats.current_model.split("/").pop()?.replace(":free", "") ?? data.llm_stats.current_model}
+            </p>
+          </div>
+        </div>
+        {/* All Available Models */}
+        <div className="mt-4 border-t border-slate-700 pt-3">
+          <p className="text-sm text-slate-400 mb-2">Available Models</p>
+          <div className="flex flex-wrap gap-2">
+            {data.llm_stats.fallback_models.map((model) => {
+              const shortName = model.split("/").pop()?.replace(":free", "") ?? model;
+              const isActive = model === data.llm_stats.current_model;
+              return (
+                <span
+                  key={model}
+                  className={`rounded-full px-3 py-1 text-xs font-medium ${
+                    isActive
+                      ? "bg-blue-500/20 text-blue-400 ring-1 ring-blue-500/40"
+                      : "bg-slate-700/50 text-slate-400"
+                  }`}
+                  title={model}
+                >
+                  {shortName}
+                  {isActive && " ●"}
+                </span>
+              );
+            })}
           </div>
         </div>
       </div>

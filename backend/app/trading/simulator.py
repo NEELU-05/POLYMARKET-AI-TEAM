@@ -26,18 +26,7 @@ class PaperTradingSimulator:
         return self._settings
 
     async def get_balance(self, db: AsyncSession) -> float:
-        """Calculate current balance from trade history."""
-        # Get latest snapshot or compute from scratch
-        snapshot_q = await db.execute(
-            select(PortfolioSnapshot)
-            .order_by(PortfolioSnapshot.timestamp.desc())
-            .limit(1)
-        )
-        snapshot = snapshot_q.scalar_one_or_none()
-
-        if snapshot:
-            return snapshot.balance
-
+        """Calculate current balance from trade history (always fresh)."""
         return await self._compute_balance(db)
 
     async def _compute_balance(self, db: AsyncSession) -> float:

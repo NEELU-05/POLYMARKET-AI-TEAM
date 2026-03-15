@@ -50,6 +50,11 @@ class ReflectionAgent(BaseAgent):
 
             # Close the trade
             winning = resolution["winning_outcome"]
+
+            # Skip if market hasn't clearly resolved (winning_outcome is None)
+            if winning is None:
+                continue
+
             trade_side = trade.side.value
 
             if trade_side == winning:
@@ -79,6 +84,9 @@ class ReflectionAgent(BaseAgent):
 
             try:
                 result = await llm_client.query(SYSTEM_PROMPT, user_prompt)
+
+                if not isinstance(result, dict) or result.get("parse_error"):
+                    result = {}
 
                 reflection = ReflectionResult(
                     trade_id=trade.id,

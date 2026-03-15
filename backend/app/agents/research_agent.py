@@ -85,7 +85,7 @@ class ResearchAgent(BaseAgent):
 
         result = await llm_client.query(SYSTEM_PROMPT, user_prompt)
 
-        if result.get("parse_error"):
+        if not isinstance(result, dict) or result.get("parse_error"):
             return ResearchResult(
                 condition_id=market.condition_id,
                 question=market.question,
